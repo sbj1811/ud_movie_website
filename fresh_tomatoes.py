@@ -54,16 +54,37 @@ main_page_head = '''
             background-color: white;
         }
         .btn-trans {
-		  color: #878787;
-		  background-color: transparent;
-		  border-color: transparent;
-		}
+		        color: #878787;
+		        background-color: transparent;
+		        border-color: transparent;
+		    }
 
-		.btn-trans:hover {
-		  color: #CD383A;
-		  background-color: transparent;
-		  border-color: transparent;
-		}
+		    .btn-trans:hover {
+		        color: #FF0F2B;
+		        background-color: transparent;
+		        border-color: transparent;
+		    }
+
+        .trailer-btn {
+            margin: 10px;
+            padding: 0px;
+            border: 0px;
+        }
+
+        .btn {
+          color:#fff;
+          background-color:#FF0F2B;
+        }
+
+        .logo {
+          margin:5px;
+        }
+
+        .head-img {
+          border: 10px;
+          max-width: 25rem;
+          max-height: 15rem;
+        }
     </style>
     <script type="text/javascript" charset="utf-8">
         // Pause the video when the modal is closed
@@ -114,9 +135,11 @@ main_page_content = '''
     <!-- Main Page Content -->
     <div class="container">
       <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
+        <div class="container logo">
           <div class="navbar-header">
-            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+            <a class="logo" href="#">
+              <img class="head-img" src="images/logo.png" alt="No Image to Display">
+            </a>
           </div>
         </div>
       </div>
@@ -136,7 +159,7 @@ movie_tile_content = '''
 				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_{movie_id}"><span class="glyphicon glyphicon-chevron-down"></span>
 				</button>
 				<div class="collapse text-center" id="synopsis_{movie_id}">
-					<div>
+					<div class="trailer-btn">
 					<button type="button" class="btn" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">Trailer</button>
 					</div>
 				   	<h4>Synopsis</h4>
