@@ -1,0 +1,216 @@
+
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+        .btn-trans {
+		  color: #878787;
+		  background-color: transparent;
+		  border-color: transparent;
+		}
+
+		.btn-trans:hover {
+		  color: #CD383A;
+		  background-color: transparent;
+		  border-color: transparent;
+		}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.btn', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/8/8a/Dark_Knight.jpg" width="220" height="342">
+		    	<h2>The Dark Knight</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_0"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_0">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="EXeTwQWrcwY" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	When the menace known as the Joker emerges from his mysterious past, he wreaks havoc and chaos on the people of Gotham, the Dark Knight must accept one of the greatest psychological and physical tests of his ability to fight injustice.
+				   	<h4>IMDB Rating</h4>
+				   	9/10
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/c/cd/The_Martian_film_poster.jpg" width="220" height="342">
+		    	<h2>The Martian</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_1"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_1">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="ej3ioOneTy8" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	An astronaut becomes stranded on Mars after his team assume him dead, and must rely on his ingenuity to find a way to signal to Earth that he is alive.
+				   	<h4>IMDB Rating</h4>
+				   	8/10
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Mad_Max_Fury_Road.jpg" width="220" height="342">
+		    	<h2>Mad Max: Fury Road</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_2"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_2">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="hEJnMQG9ev8" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	A woman rebels against a tyrannical ruler in postapocalyptic Australia in search for her home-land with the help of a group of female prisoners, a psychotic worshipper, and a drifter named Max.
+				   	<h4>IMDB Rating</h4>
+				   	8.1/10
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/a/ab/La_La_Land_%28film%29.png" width="220" height="342">
+		    	<h2>La La Land</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_3"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_3">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="0pdqf4P9MB8" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	While navigating their careers in Los Angeles, a pianist and an actress fall in love while attempting to reconcile their aspirations for the future.
+				   	<h4>IMDB Rating</h4>
+				   	8.1/10
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/b/b6/The_Revenant_2015_film_poster.jpg" width="220" height="342">
+		    	<h2>The Revenant</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_4"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_4">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="LoebZZ8K5N0" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear and left for dead by members of his own hunting team.
+				   	<h4>IMDB Rating</h4>
+				   	8/10
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 movie-tile text-center">
+		   		<img src="https://upload.wikimedia.org/wikipedia/en/7/77/ZeroDarkThirty2012Poster.jpg" width="220" height="342">
+		    	<h2>Zero Dark Thirty</h2>
+				<button type="button" class="btn-trans collapsed" data-toggle="collapse" data-target="#synopsis_5"><span class="glyphicon glyphicon-chevron-down"></span>
+				</button>
+				<div class="collapse text-center" id="synopsis_5">
+					<div>
+					<button type="button" class="btn" data-trailer-youtube-id="EYFhFYoDAo4" data-toggle="modal" data-target="#trailer">Trailer</button>
+					</div>
+				   	<h4>Synopsis</h4>
+				   	A chronicle of the decade-long hunt for al-Qaeda terrorist leader Osama bin Laden after the September 2001 attacks, and his death at the hands of the Navy S.E.A.L.s Team 6 in May 2011.
+				   	<h4>IMDB Rating</h4>
+				   	7.4/10
+				</div>
+			</div>
+
+    </div>
+  </body>
+</html>
