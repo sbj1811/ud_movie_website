@@ -164,6 +164,12 @@ movie_tile_content = '''
 					</div>
 				   	<h4>Synopsis</h4>
 				   	{storyline}
+            <h4>Release Date</h4>
+            {release_date}
+            <h4>Director</h4>
+            {director}
+            <h4>Cast</h4>
+            {cast}
 				   	<h4>IMDB Rating</h4>
 				   	{movie_imdb}
 				</div>
@@ -181,12 +187,15 @@ def create_movie_tiles_content(movies):
 
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
-        	movie_id=movie.mid,
+         	  movie_id=movie.mid,
             movie_title=movie.title,
-            movie_imdb=movie.imdb,
             storyline=movie.storyline,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            release_date=movie.release_date,
+            director=movie.director,
+            cast=movie.cast,
+            movie_imdb=movie.imdb
         )
     return content
 
