@@ -1,9 +1,12 @@
+# importing webbrowser module module to open URLs
 import webbrowser
+
+# Class movie
 class Movie():
 	def __init__(self, movie_id, movie_title, movie_storyline, poster_image, \
 		trailer_youtube, movie_rel_date, movie_director, movie_cast, movie_imdb):
 		"""
-    	This function determines if word is in replacement list
+    	This function initializes the object 
     	:inputs: movie_id        - index for movie
     			 movie_title     - Movie title
     			 movie_storyline - Movie Synopsis
@@ -25,4 +28,8 @@ class Movie():
 		self.imdb = movie_imdb
 
 	def show_trailer(self):
+		"""
+    	This function openes trailer URL for the movie object
+    	:inputs: self - movie object 
+    	"""
 		webbrowser.open(self.trailer_youtube_url)
